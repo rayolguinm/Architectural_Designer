@@ -7,30 +7,28 @@ function updateProgress() {
 }
 window.addEventListener("scroll", updateProgress, { passive: true });
 
-/* ---------- Active section tracking (drives both desktop + mobile nav) ---------- */
-const sidenav = document.getElementById("sidenav");
+/* ---------- Active section tracking (drives mobile nav) ---------- */
 const mobileBottomnav = document.getElementById("mobile-bottomnav");
 const mobileLabel = document.getElementById("m-section-label");
-const navLinks = sidenav.querySelectorAll("a");
-const mobileNavLinks = mobileBottomnav.querySelectorAll("a");
-const sections = [...navLinks].map(a => document.getElementById(a.dataset.target)).filter(Boolean);
+const mobileNavLinks = mobileBottomnav ? mobileBottomnav.querySelectorAll("a") : [];
+const sections = [...mobileNavLinks].map(a => document.getElementById(a.dataset.target)).filter(Boolean);
 
 /* Map section id -> human label for mobile top bar */
 const sectionLabels = window.SECTION_LABELS || {};
 
 function setActive() {
+  if (!sections.length) return;
   const y = window.scrollY + window.innerHeight * 0.35;
   let active = sections[0];
   for (const s of sections) { if (s.offsetTop <= y) active = s; }
   const activeId = active.id;
-  navLinks.forEach(a => a.classList.toggle("active", a.dataset.target === activeId));
   mobileNavLinks.forEach(a => a.classList.toggle("active", a.dataset.target === activeId));
   /* Update mobile top bar label */
   if (mobileLabel && sectionLabels[activeId]) {
     mobileLabel.textContent = sectionLabels[activeId];
   }
   /* Auto-scroll bottom nav so active tab stays visible on narrow screens */
-  const activeMobileLink = mobileBottomnav.querySelector("a.active");
+  const activeMobileLink = mobileBottomnav ? mobileBottomnav.querySelector("a.active") : null;
   if (activeMobileLink) {
     activeMobileLink.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
   }
