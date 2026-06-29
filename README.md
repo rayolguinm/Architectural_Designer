@@ -1,13 +1,13 @@
 # Raymundo Olguin — Portfolio
 
-Architectural & Landscape Designer portfolio site. Nine selected projects, thirty-four renders.
+Architectural & Landscape Designer portfolio site. Nine selected projects, thirty-two renders.
 
 **Live site:** [raymundo-olguin.github.io](https://raymundo-olguin.github.io) *(update this once deployed)*
 
 ## Features
 
 - Two complete design languages: warm editorial monograph on desktop, dark iOS-native app on mobile
-- 34 high-resolution renders across 9 projects
+- 32 high-resolution renders across 9 projects
 - Justified gallery layout with aspect-aware pairing
 - Interactive lightbox, keyboard navigation, scroll-triggered reveals
 - No frameworks, no build step — vanilla HTML/CSS/JS
@@ -20,7 +20,7 @@ Architectural & Landscape Designer portfolio site. Nine selected projects, thirt
 ├── index.html       Main document
 ├── styles.css       All styles for both desktop + mobile designs
 ├── app.js           Interactive behavior (nav, lightbox, justified gallery)
-├── images/          34 optimized JPEG renders (2560px max, q90)
+├── images/          32 optimized JPEG renders (2560px max, q90)
 ├── .nojekyll        Tells GitHub Pages not to process with Jekyll
 └── README.md        This file
 ```
